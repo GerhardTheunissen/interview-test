@@ -1,0 +1,18 @@
+.heading{
+    margin:20px;
+    display: flex;
+    justify-content: center;
+    color: blue;
+}
+
+.evolveupdate{
+    margin:20px;
+    display: flex;
+    justify-content: center;
+    color: grey;
+}
+
+.data-table{
+    width:80%;
+    margin:20px auto;
+}

@@ -1,0 +1,54 @@
+<h2 class="heading">Tour of Heroes</h2>
+<h3 class="evolveupdate" id="evolveUpdateLabel"></h3>
+<div class="mat-elevation-z8 data-table">
+  <mat-table #table [dataSource]="dataFromService" matSort aria-label="Elements">
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+
+    <!-- name Column -->
+    <ng-container matColumnDef="name"#name>
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{row.name}}</mat-cell>
+    </ng-container>
+
+    <!-- power Column -->
+    <ng-container matColumnDef="power">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Power</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{row.power}}</mat-cell>
+    </ng-container>
+
+     <!-- strengh Column -->
+     <ng-container matColumnDef="strength">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Stat(Strengh)</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{row.stats[0].value}}</mat-cell>
+    </ng-container>
+
+     <!-- intelligence Column -->
+     <ng-container matColumnDef="intelligence">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Stat(Intelligence)</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{row.stats[1].value}}</mat-cell>
+    </ng-container>
+
+      <!-- stamina Column -->
+      <ng-container matColumnDef="stamina">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Stat(Stamina)</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{row.stats[2].value}}</mat-cell>
+      </ng-container>
+
+      <!-- evolve button Column -->
+      <ng-container matColumnDef="evolveBtn">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Action</mat-header-cell>
+        <mat-cell *matCellDef="let row"><button mat-raised-button color="primary"(click)="evolveHero(row.name)">Evolve</button></mat-cell>
+      </ng-container>
+
+
+   
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+
+  <mat-paginator #paginator
+    [length]="20"
+    [pageIndex]="0"
+    [pageSize]="50"
+    [pageSizeOptions]="[25, 50, 100, 250]">
+  </mat-paginator>
+</div>
